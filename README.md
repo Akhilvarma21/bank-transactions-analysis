@@ -48,13 +48,19 @@ SELECT customer_name, SUM(amount) AS total_spent
 FROM bank_transactions
 WHERE type='Debit'
 GROUP BY customer_name;
+```
 
+Category-wise Spending
+```sql
 SELECT category, SUM(amount) AS total_spent
 FROM bank_transactions
 WHERE type='Debit'
 GROUP BY category
 ORDER BY total_spent DESC;
+```
 
+Customer Net Balance
+```sql
 SELECT customer_name,
     SUM(CASE WHEN type='Credit' THEN amount ELSE 0 END) AS total_credited,
     SUM(CASE WHEN type='Debit' THEN amount ELSE 0 END) AS total_debited,
@@ -73,3 +79,11 @@ Insights
 - Neha receives the highest credits due to multiple salary entries.
 - Bills & Shopping form major expense segments.
 - Daily credit spikes occur on Feb 12 & Feb 21 (EMI and Salary credits).
+
+Conclusion
+This project showcases beginner-level SQL + Excel data analysis skills, including:
+- Data preparation
+- Query writing
+- Aggregation & grouping
+- Visualization
+- Insight extraction
